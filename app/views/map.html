@@ -1,0 +1,279 @@
+<div data-role="page" data-add-back-btn="false" id="map">
+
+	<script src="../viewModels/map.js"></script>
+
+	<div data-role="header" data-position="fixed" data-tap-toggle="false"
+		class="appHeader">
+		<div class="ui-grid-a pageHeader orangeBgButton">
+			<div class="ui-block-a headerButton blueBgButton">
+				<a href="#" class="headerDefault" data-icon=""
+					data-bind="click: openPanel">
+					<img src="../../images/iconBars.png" />
+				</a>
+			</div>
+			<div class="ui-block-b headerText blueBgButton">
+				<img src="../../images/iconGas.png" />
+				<span>ESTACIONES DE SERVICIOS</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="ui-content">
+
+		<div data-bind="visible: viewShowed() == 1">
+
+			<div class="ui-grid-b">
+				<div class="ui-block-a">
+					<div class="ui-grid-a">
+						<div class="ui-block-a">
+							<a href="#" data-icon="false"
+								class="ui-btn ui-nodisc-icon buttonFilterList"
+								data-bind="css: {blueBgButton: !filterStore(), orangeBgButton: filterStore()}, click:function(){filterStore(!filterStore()); applyFilter()}">
+								<img src="../../images/iconCart.png" />
+							</a>
+						</div>
+						<div class="ui-block-b">
+							<p class="buttonFilterText">Tienda</p>
+						</div>
+					</div>
+				</div>
+				<div class="ui-block-b">
+					<div class="ui-grid-a">
+						<div class="ui-block-a">
+							<a href="#" data-icon="false"
+								class="ui-btn ui-nodisc-icon buttonFilterList"
+								data-bind="css: {blueBgButton: !filterAtm(), orangeBgButton: filterAtm()}, click:function(){filterAtm(!filterAtm()); applyFilter()}">
+								<img src="../../images/iconAtm.png" />
+							</a>
+						</div>
+						<div class="ui-block-b">
+							<p class="buttonFilterText">Cajero</p>
+						</div>
+					</div>
+				</div>
+				<div class="ui-block-c">
+					<div class="ui-grid-a">
+						<div class="ui-block-a">
+							<a href="#" data-icon="false"
+								class="ui-btn ui-nodisc-icon buttonFilterList"
+								data-bind="css: {blueBgButton: !filterMechanic(), orangeBgButton: filterMechanic()}, click:function(){filterMechanic(!filterMechanic()); applyFilter()}">
+								<img src="../../images/iconMechanic.png" />
+							</a>
+						</div>
+						<div class="ui-block-b">
+							<p class="buttonFilterText">Mecánica</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="ui-grid-d btnGasTypeContainer">
+				<div class="ui-block-a">
+					<a href="#" class="ui-btn btnGasType blueBgButton"
+						data-bind="css: {blueBgButton: !filterSuper(), orangeBgButton: filterSuper()}, click:function(){filterSuper(!filterSuper()); applyFilter()}">super</a>
+				</div>
+				<div class="ui-block-b">
+					<a href="#" class="ui-btn btnGasType blueBgButton"
+						data-bind="css: {blueBgButton: !filterExtra(), orangeBgButton: filterExtra()}, click:function(){filterExtra(!filterExtra()); applyFilter()}">extra</a>
+				</div>
+				<div class="ui-block-c">
+					<a href="#" class="ui-btn btnGasType blueBgButton"
+						data-bind="css: {blueBgButton: !filterDiesel(), orangeBgButton: filterDiesel()}, click:function(){filterDiesel(!filterDiesel()); applyFilter()}">diesel</a>
+				</div>
+				<div class="ui-block-d">
+					<a href="#" class="ui-btn btnGasType blueBgButton"
+						data-bind="css: {blueBgButton: !filterEco(), orangeBgButton: filterEco()}, click:function(){filterEco(!filterEco()); applyFilter()}">eco</a>
+				</div>
+				<div class="ui-block-e">
+					<a href="#" class="ui-btn btnGasType blueBgButton"
+						data-bind="css: {blueBgButton: !filterLub(), orangeBgButton: filterLub()}, click:function(){filterLub(!filterLub()); applyFilter()}">lubricante</a>
+				</div>
+			</div>
+
+		</div>
+
+		<div id="selectFilters" data-role="navbar" data-iconpos="left"
+			data-bind="visible: viewShowed() == 2">
+			<div class="ui-grid-a">
+				<div class="ui-block-a">
+					<select
+						data-bind="options: states, optionsText: 'name', optionsValue: 'id', value: selectedState, optionsCaption: 'Provincia'">
+					</select>
+				</div>
+				<div class="ui-block-b">
+					<select
+						data-bind="options: cities, optionsText: 'name', optionsValue: 'id', value: selectedCity, optionsCaption: 'Ciudad'">
+					</select>
+				</div>
+			</div>
+		</div>
+		<!-- <div style="position: absolute; z-index: 1;">
+			<input type="text" id="txtTest" value="://"/>
+		</div> -->
+
+		<div data-role="navbar" data-iconpos="left" class="navbarPages">
+			<ul>
+				<li>
+					<a href="#" data-icon="false"
+						style="background-image: url('../../images/iconSquares.png');"
+						data-bind="click: function(){toggleMapView(1)}, css: {'ui-btn-active': viewShowed() == 1}">
+					</a>
+				</li>
+				<li>
+					<a href="#" data-icon="false" class=""
+						style="background-image: url('../../images/iconMap.png');"
+						data-bind="click: function(){toggleMapView(2)}, css: {'ui-btn-active': viewShowed() == 2}"></a>
+				</li>
+				<li>
+					<div class="blueBgButton" style="height: 34px;">&nbsp</div>
+				</li>
+			</ul>
+		</div>
+
+		<div id="sitesList" data-bind="visible: viewShowed() == 1">
+			<div class="emptyContent" data-bind="visible: stations().length == 0">No
+				existen estaciones para mostrar</div>
+
+			<!-- ko foreach: stations -->
+			<div class="ui-grid-c stationsList">
+				<div class="ui-block-a station1">
+					<img src="../../images/iconDispatcher.png" />
+				</div>
+				<div class="ui-block-b station2">
+					<a href="#" data-bind="click: function(){$root.openMarker($index)}">
+						<span class="name" data-bind="text: name"></span>
+						<br />
+						<span class="address" data-bind="text: address"></span>
+					</a>
+				</div>
+				<div class="ui-block-c station3">
+					<a href="#" data-icon="false" onclick=""
+						class="ui-btn ui-nodisc-icon buttonFilterList distanceIndicator">
+						<span data-bind="text: distance.formatMoney(2, '.', ',') + 'km'"></span>
+					</a>
+				</div>
+				<div class="ui-block-d station4">
+					<!-- <a href="#" data-icon="false"
+						class="ui-btn ui-nodisc-icon buttonGps"
+						data-bind="click: $root.calculateRoute"> </a> -->
+					<a href="#" data-icon="false"
+						class="ui-btn ui-nodisc-icon buttonGps"
+						data-bind="click: $root.openRouteOnMap"></a>
+				</div>
+			</div>
+			<!-- /ko -->
+
+		</div>
+		<div id="sitesMap" class="map-content"
+			data-bind="visible: viewShowed() == 2">
+			<div id="map-canvas"></div>
+			<form id="kmSlider">
+				<div class="ui-grid-a">
+					<div class="ui-block-a"
+						style="width: 15%; padding-top: 5px; text-align: right;">
+						<span style="font-size: 14px; color: #fff; text-shadow: none;"
+							data-bind="text: selectedRange() + 'km'"></span>
+					</div>
+					<div class="ui-block-b" style="width: 85%">
+						<input type="range" name="sldRange" id="sldRange" min="3" max="50"
+							data-mini="true" data-bind="value: selectedRange" value="10">
+					</div>
+				</div>
+			</form>
+			<img src="../../images/iconExpand.png" class="imgExpandMap"
+				data-bind="visible: !isMapExpanded(), click: toogleExpandMap" />
+			<img src="../../images/iconContract.png" class="imgExpandMap"
+				data-bind="visible: isMapExpanded, click: toogleExpandMap" />
+		</div>
+	</div>
+
+	<div data-role="footer" style="overflow: hidden;" data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+				<li>
+					<a href="mapFilters.html" class="blueBgButton">
+						Buscar por provincia y ciudad
+						<img style="width: 20px;" src="../../images/country.png" />
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<div data-role="panel" data-position-fixed="true" data-display="push"
+		data-theme="b" id="pnlLeft">
+		<ul data-role="listview">
+			<li data-icon="delete">
+				<a href="#" data-rel="close" class="blueBgButton">PetroGuía</a>
+			</li>
+		</ul>
+		<div class="linksContainer">
+			<div class="ui-grid-b mainMenuItem heavenlyBgButton"
+				data-bind="click: function(){goToPage(0)}">
+				<div class="ui-block-a menuItemImage blueBgButton">
+					<img src="../../images/iconHome.png">
+				</div>
+				<div class="ui-block-b menuItemText blueBgButton"
+					style="width: 45%;">
+					<a href="../../index.html">Inicio</a>
+				</div>
+				<div class="ui-block-c menuCorner">
+					<img src="../../images/corner.png" class="corner">
+				</div>
+			</div>
+			<div class="ui-grid-b mainMenuItem greenBgButton"
+				data-bind="click: function(){goToPage(1)}">
+				<div class="ui-block-a menuItemImage blueBgButton">
+					<img src="../../images/iconPetro.png">
+				</div>
+				<div class="ui-block-b menuItemText blueBgButton"
+					style="width: 45%;">
+					<a href="petro.html">CONOCE PETROECUADOR</a>
+				</div>
+				<div class="ui-block-c menuCorner">
+					<img src="../../images/corner.png" class="corner">
+				</div>
+			</div>
+			<div class="ui-grid-b  mainMenuItem orangeBgButton"
+				data-bind="click: function(){goToPage(2)}">
+				<div class="ui-block-a menuItemImage blueBgButton">
+					<img src="../../images/iconGas.png">
+				</div>
+				<div class="ui-block-b menuItemText blueBgButton"
+					style="width: 45%;">
+					<a href="map.html">ESTACIONES DE SERVICIOS</a>
+				</div>
+				<div class="ui-block-c menuCorner">
+					<img src="../../images/corner.png" class="corner">
+				</div>
+			</div>
+			<div class="ui-grid-b mainMenuItem redBgButton"
+				data-bind="click: function(){goToPage(3)}">
+				<div class="ui-block-a menuItemImage blueBgButton">
+					<img src="../../images/iconBox.png">
+				</div>
+				<div class="ui-block-b menuItemText blueBgButton"
+					style="width: 45%;">
+					<a href="offers.html">NOVEDADES Y PROMOCIONES</a>
+				</div>
+				<div class="ui-block-c menuCorner">
+					<img src="../../images/corner.png" class="corner">
+				</div>
+			</div>
+			<div class="ui-grid-b mainMenuItem violetBgButton"
+				data-bind="click: function(){goToPage(4)}">
+				<div class="ui-block-a menuItemImage blueBgButton">
+					<img src="../../images/iconShare.png">
+				</div>
+				<div class="ui-block-b menuItemText blueBgButton"
+					style="width: 45%;">
+					<a href="social.html">SIGUENOS Y COMPARTE</a>
+				</div>
+				<div class="ui-block-c menuCorner">
+					<img src="../../images/corner.png" class="corner">
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>

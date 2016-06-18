@@ -1,0 +1,175 @@
+<div data-role="page" data-add-back-btn="false" id="stationDetail">
+
+	<script src="../viewModels/stationDetail.js"></script>
+
+	<div data-role="header" data-position="fixed" data-tap-toggle="false"
+		class="appHeader">
+		<div class="ui-grid-a pageHeader orangeBgButton">
+			<div class="ui-block-a headerButton blueBgButton">
+				<a href="#" class="headerDefault" data-icon=""
+					data-bind="click: openPanel">
+					<img src="../../images/iconBars.png" />
+				</a>
+			</div>
+			<div class="ui-block-b headerText blueBgButton">
+				<img src="../../images/iconGas.png" />
+				<span>ESTACIONES DE SERVICIOS</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="ui-content">
+
+		<div class="ui-grid-c stationsList"
+			style="background-color: #fff;; border: none; padding: 5px;">
+			<div class="ui-block-a station1">
+				<img src="../../images/iconGasEmpty.png" />
+			</div>
+			<div class="ui-block-b station2">
+				<a href="#" style="color: rgb(0, 0, 0) !important;">
+					<span class="name" data-bind="text: thisStation().name"></span>
+					<br />
+					<span class="address" data-bind="text: thisStation().address"></span>
+				</a>
+			</div>
+			<div class="ui-block-c station3"
+				data-bind="visible: thisStation().distance != undefined">
+				<a href="#" data-icon="false" onclick=""
+					class="ui-btn ui-nodisc-icon buttonFilterList distanceIndicator">
+					<span data-bind="text: thisStation().distance + 'km'"></span>
+				</a>
+			</div>
+			<div class="ui-block-d station4">
+				<a href="#" data-icon="false"
+					class="ui-btn ui-nodisc-icon buttonGps"
+					data-bind="click: calculateRoute"></a>
+			</div>
+		</div>
+		<div>
+			<img width="100%" data-bind="attr: {src: stationImageUrl}" />
+		</div>
+		<div class="ui-grid-d blueBar">
+			<div class="ui-block-a">
+				<p data-bind="visible: s">super</p>
+			</div>
+			<div class="ui-block-b">
+				<p data-bind="visible: e">extra</p>
+			</div>
+			<div class="ui-block-c">
+				<p data-bind="visible: d">diesel</p>
+			</div>
+			<div class="ui-block-d">
+				<p data-bind="visible: a">eco</p>
+			</div>
+			<div class="ui-block-e">
+				<p data-bind="visible: l">lubricante</p>
+			</div>
+		</div>
+		<div class="ui-grid-d blueBar" style="padding: 10px 0px;">
+			<div class="ui-block-a"></div>
+			<div class="ui-block-b">
+				<img src="../../images/iconAtm.png" data-bind="visible: c" />
+			</div>
+			<div class="ui-block-c">
+				<img src="../../images/iconCart.png" data-bind="visible: s" />
+			</div>
+			<div class="ui-block-d">
+				<img src="../../images/iconMechanic.png" data-bind="visible: m" />
+			</div>
+			<div class="ui-block-e"></div>
+		</div>
+		<div class="ui-grid-d blueBar" style="padding: 10px 0px;">
+			<a href="#" data-bind="attr: {href: 'tel:' + thisStation().phone}">
+				<img style="height: 30px; margin-right: 10px;"
+					src="../../images/iconPhone.png" />
+				<span style="font-size: 23px;" data-bind="text: thisStation().phone"></span>
+			</a>
+		</div>
+
+	</div>
+
+	<div id="sitesMap" class="map-content">
+		<div id="map-canvas" style="height: 400px;"></div>
+		<!-- <img src="../../images/iconExpand.png" class="imgExpandMap"
+			data-bind="visible: !isMapExpanded(), click: toogleExpandMap" />
+		<img src="../../images/iconContract.png" class="imgExpandMap"
+			data-bind="visible: isMapExpanded, click: toogleExpandMap" /> -->
+	</div>
+
+	<div data-role="panel" data-position-fixed="true" data-display="push"
+		data-theme="b" id="pnlLeft">
+		<ul data-role="listview">
+			<li data-icon="delete">
+				<a href="#" data-rel="close" class="blueBgButton">PetroGuía</a>
+			</li>
+		</ul>
+		<div class="linksContainer">
+			<div class="ui-grid-b mainMenuItem heavenlyBgButton"
+				data-bind="click: function(){goToPage(0)}">
+				<div class="ui-block-a menuItemImage blueBgButton">
+					<img src="../../images/iconHome.png">
+				</div>
+				<div class="ui-block-b menuItemText blueBgButton"
+					style="width: 45%;">
+					<a href="../../index.html">Inicio</a>
+				</div>
+				<div class="ui-block-c menuCorner">
+					<img src="../../images/corner.png" class="corner">
+				</div>
+			</div>
+			<div class="ui-grid-b mainMenuItem greenBgButton"
+				data-bind="click: function(){goToPage(1)}">
+				<div class="ui-block-a menuItemImage blueBgButton">
+					<img src="../../images/iconPetro.png">
+				</div>
+				<div class="ui-block-b menuItemText blueBgButton"
+					style="width: 45%;">
+					<a href="petro.html">CONOCE PETROECUADOR</a>
+				</div>
+				<div class="ui-block-c menuCorner">
+					<img src="../../images/corner.png" class="corner">
+				</div>
+			</div>
+			<div class="ui-grid-b  mainMenuItem orangeBgButton"
+				data-bind="click: function(){goToPage(2)}">
+				<div class="ui-block-a menuItemImage blueBgButton">
+					<img src="../../images/iconGas.png">
+				</div>
+				<div class="ui-block-b menuItemText blueBgButton"
+					style="width: 45%;">
+					<a href="map.html">ESTACIONES DE SERVICIOS</a>
+				</div>
+				<div class="ui-block-c menuCorner">
+					<img src="../../images/corner.png" class="corner">
+				</div>
+			</div>
+			<div class="ui-grid-b mainMenuItem redBgButton"
+				data-bind="click: function(){goToPage(3)}">
+				<div class="ui-block-a menuItemImage blueBgButton">
+					<img src="../../images/iconBox.png">
+				</div>
+				<div class="ui-block-b menuItemText blueBgButton"
+					style="width: 45%;">
+					<a href="offers.html">NOVEDADES Y PROMOCIONES</a>
+				</div>
+				<div class="ui-block-c menuCorner">
+					<img src="../../images/corner.png" class="corner">
+				</div>
+			</div>
+			<div class="ui-grid-b mainMenuItem violetBgButton"
+				data-bind="click: function(){goToPage(4)}">
+				<div class="ui-block-a menuItemImage blueBgButton">
+					<img src="../../images/iconShare.png">
+				</div>
+				<div class="ui-block-b menuItemText blueBgButton"
+					style="width: 45%;">
+					<a href="social.html">SIGUENOS Y COMPARTE</a>
+				</div>
+				<div class="ui-block-c menuCorner">
+					<img src="../../images/corner.png" class="corner">
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>

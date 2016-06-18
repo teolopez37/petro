@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0"
+	id="com.neptuno.pe" versionCode="4" version="1.0.4">
+	<name>PetroGuía</name>
+	<author href="http://www.neptuno.com.ec" email="lopez.eandres@gmail.com">
+		Neptuno
+	</author>
+
+	<gap:platform name="ios" />
+	<gap:platform name="android" />
+	<gap:platform name="winphone" />
+
+	<gap:plugin name="org.apache.cordova.device" />
+	<gap:plugin name="org.apache.cordova.network-information"
+		version="0.2.7" />
+	<gap:plugin name="org.apache.cordova.splashscreen" />
+	<gap:plugin name="com.phonegap.plugin.statusbar" version="1.1.0" />
+	<gap:plugin name="org.apache.cordova.camera" version="0.2.9" />
+	<gap:plugin name="org.apache.cordova.geolocation" version="0.3.12" />
+	
+	<gap:plugin name="com.ohh2ahh.plugins.appavailability" version="0.3.1"/>
+
+	<preference name="phonegap-version" value="3.6.3" />
+	<preference name="orientation" value="portrait" />
+	<preference name="fullscreen" value="true" />
+	<preference name="AutoHideSplashScreen" value="false" />
+	<preference name="SplashScreenDelay" value="10000" />
+	<preference name="permissions" value="none" />
+
+	<preference name="target-device" value="handset" />
+	<gap:plugin name="com.phonegap.plugin.statusbar" version="1.1.0" />
+	<gap:plugin name="nl.x-services.plugins.socialsharing"
+		version="4.3.8" />
+	<plugin name="org.apache.cordova.inappbrowser" spec="0.6.0" source="pgb" />
+	<!-- <gap:plugin name="org.apache.cordova.inappbrowser" version="0.5.2" /> -->
+
+	
+
+	<access origin="http://127.0.0.1*" />
+	<access origin="*" />
+	<access origin="geo:*" launch-external="yes" />
+
+	<gap:config-file platform="ios" parent="CFBundleShortVersionString">
+		<string>12</string>
+	</gap:config-file>
+
+	<gap:config-file platform="ios"
+		parent="UIViewControllerBasedStatusBarAppearance" overwrite="true">
+		<false />
+	</gap:config-file>
+
+	<gap:config-file platform="ios"
+		parent="NSLocationAlwaysUsageDescription" overwrite="false">
+		<array>
+			<string>Allow GPS</string>
+		</array>
+	</gap:config-file>
+
+	<!-- SPLASH -->
+
+	<gap:splash src="splash/splash.png" />
+
+	<!-- IOS -->
+
+	<!-- iPhone and iPod touch -->
+	<gap:splash src="splash/Default.png" gap:platform="ios"
+		width="320" height="480" />
+	<gap:splash src="splash/Default@2x.png" gap:platform="ios"
+		width="640" height="960" />
+
+	<!-- iPhone 5 / iPod Touch (5th Generation) -->
+	<gap:splash src="splash/Default-568h@2x.png" gap:platform="ios"
+		width="640" height="1136" />
+
+	<!-- iPhone 6 -->
+	<gap:splash src="splash/Default-667h@2x.png" gap:platform="ios"
+		width="750" height="1334" />
+	<gap:splash src="splash/Default-Portrait-736h@3x.png"
+		gap:platform="ios" width="1242" height="2208" />
+
+	<!-- ANDROID -->
+
+	<gap:splash src="splash/ldpi.png" gap:platform="android"
+		gap:density="ldpi" />
+	<gap:splash src="splash/mdpi.png" gap:platform="android"
+		gap:density="mdpi" />
+	<gap:splash src="splash/hdpi.png" gap:platform="android"
+		gap:density="hdpi" />
+	<gap:splash src="splash/xhdpi.png" gap:platform="android"
+		gap:density="xhdpi" />
+	<gap:splash src="splash/xxhdpi.png" gap:platform="android"
+		gap:density="xxhdpi" />
+
+	<!-- ICONS -->
+
+	<icon src="icon.png" />
+
+	<!-- <icon src="icons/57.png" gap:platform="ios" width="57" height="57" 
+		/> <icon src="icons/72.png" gap:platform="ios" width="72" height="72" /> 
+		<icon src="icons/76.png" gap:platform="ios" width="76" height="76" /> <icon 
+		src="icons/114.png" gap:platform="ios" width="114" height="114" /> <icon 
+		src="icons/120.png" gap:platform="ios" width="120" height="120" /> <icon 
+		src="icons/144.png" gap:platform="ios" width="144" height="144" /> <icon 
+		src="icons/152.png" gap:platform="ios" width="152" height="152" /> -->
+
+	<!-- IOS -->
+
+	<icon src="icons/57.png" gap:platform="ios" width="57" height="57"></icon>
+
+	<!-- iPhone 6 / 6+ -->
+	<icon src="icon-60@3x.png" gap:platform="ios" width="180" height="180" />
+
+	<!-- iPhone / iPod Touch -->
+	<icon src="icons/icon-60.png" gap:platform="ios" width="60"
+		height="60" />
+	<icon src="icons/icon-60@2x.png" gap:platform="ios" width="120"
+		height="120" />
+
+	<!-- iPad -->
+	<icon src="icons/icon-76.png" gap:platform="ios" width="76"
+		height="76" />
+	<icon src="icons/icon-76@2x.png" gap:platform="ios" width="152"
+		height="152" />
+
+	<!-- Settings Icon -->
+	<icon src="icons/icon-small.png" gap:platform="ios" width="29"
+		height="29" />
+	<icon src="icons/icon-small@2x.png" gap:platform="ios" width="58"
+		height="58" />
+
+	<!-- Spotlight Icon -->
+	<icon src="icons/icon-40.png" gap:platform="ios" width="40"
+		height="40" />
+	<icon src="icons/icon-40@2x.png" gap:platform="ios" width="80"
+		height="80" />
+
+	<!-- ANDROID -->
+
+	<icon src="icons/ldpi.png" gap:platform="android" gap:density="ldpi" />
+	<icon src="icons/mdpi.png" gap:platform="android" gap:density="mdpi" />
+	<icon src="icons/hdpi.png" gap:platform="android" gap:density="hdpi" />
+	<icon src="icons/xhdpi.png" gap:platform="android" gap:density="xhdpi" />
+	<icon src="icons/xxhdpi.png" gap:platform="android" gap:density="xxhdpi" />
+
+</widget>

@@ -1,0 +1,141 @@
+<div data-role="page" data-add-back-btn="false" id="petro"
+	style="background-color: #48a1d9;">
+
+	<script src="../viewModels/petro.js"></script>
+
+	<div data-role="header" data-position="fixed" data-tap-toggle="false"
+		class="appHeader">
+		<div class="ui-grid-a pageHeader greenBgButton">
+			<div class="ui-block-a headerButton blueBgButton">
+				<a href="#" class="headerDefault" data-icon=""
+					data-bind="click: openPanel">
+					<img src="../../images/iconBars.png" />
+				</a>
+			</div>
+			<div class="ui-block-b headerText blueBgButton">
+				<img src="../../images/iconPetro.png" />
+				<span>CONOCE PETROECUADOR</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="ui-content">
+
+		<div class="aboutItemMain" data-bind="click: openMainUrl">
+			<div class="redBgButton aboutBar">
+				<p data-bind="text: mainVideo().title"></p>
+			</div>
+			<img
+				data-bind="attr: {src: mainVideo().imgUrl},event: {error: onImgLoadError}" />
+			<img
+				style="width: 50px; height: 50px; position: absolute; margin-top: -140px; left: 45%;"
+				src="../../images/iconYoutubePlay.png">
+		</div>
+
+		<div class="redBgButton aboutBar" style="margin-top: -5px;">
+			<p>Más de EP Petroecuador</p>
+		</div>
+
+		<div class="ui-grid-a aboutItemContainer" data-bind="foreach: videos">
+
+			<!-- ko if: placeToShow == 1 -->
+			<div class="ui-block-a aboutItem" data-bind="click: $root.openUrl">
+				<img
+					data-bind="attr: {src: imgUrl}, event: {error: $root.onImgLoadError}" />
+				<div class="pCont">
+					<p data-bind="text: title"></p>
+					<img class="ytImage" src="../../images/iconYoutubePlay.png">
+				</div>
+			</div>
+			<!-- /ko -->
+			<!-- ko if: placeToShow == 0 -->
+			<div class="ui-block-b aboutItem" data-bind="click: $root.openUrl">
+				<img
+					data-bind="attr: {src: imgUrl}, event: {error: $root.onImgLoadError}" />
+				<div class="pCont">
+					<p data-bind="text: title"></p>
+					<img class="ytImage" src="../../images/iconYoutubePlay.png">
+				</div>
+			</div>
+			<!-- /ko -->
+		</div>
+
+	</div>
+
+	<div data-role="panel" data-position-fixed="true" data-display="push"
+		data-theme="b" id="pnlLeft">
+		<ul data-role="listview">
+			<li data-icon="delete">
+				<a href="#" data-rel="close" class="blueBgButton">PetroGuía</a>
+			</li>
+		</ul>
+		<div class="linksContainer">
+			<div class="ui-grid-b mainMenuItem heavenlyBgButton"
+				data-bind="click: function(){goToPage(0)}">
+				<div class="ui-block-a menuItemImage blueBgButton">
+					<img src="../../images/iconHome.png">
+				</div>
+				<div class="ui-block-b menuItemText blueBgButton"
+					style="width: 45%;">
+					<a href="../../index.html">Inicio</a>
+				</div>
+				<div class="ui-block-c menuCorner">
+					<img src="../../images/corner.png" class="corner">
+				</div>
+			</div>
+			<div class="ui-grid-b mainMenuItem greenBgButton"
+				data-bind="click: function(){goToPage(1)}">
+				<div class="ui-block-a menuItemImage blueBgButton">
+					<img src="../../images/iconPetro.png">
+				</div>
+				<div class="ui-block-b menuItemText blueBgButton"
+					style="width: 45%;">
+					<a href="petro.html">CONOCE PETROECUADOR</a>
+				</div>
+				<div class="ui-block-c menuCorner">
+					<img src="../../images/corner.png" class="corner">
+				</div>
+			</div>
+			<div class="ui-grid-b  mainMenuItem orangeBgButton"
+				data-bind="click: function(){goToPage(2)}">
+				<div class="ui-block-a menuItemImage blueBgButton">
+					<img src="../../images/iconGas.png">
+				</div>
+				<div class="ui-block-b menuItemText blueBgButton"
+					style="width: 45%;">
+					<a href="map.html">ESTACIONES DE SERVICIOS</a>
+				</div>
+				<div class="ui-block-c menuCorner">
+					<img src="../../images/corner.png" class="corner">
+				</div>
+			</div>
+			<div class="ui-grid-b mainMenuItem redBgButton"
+				data-bind="click: function(){goToPage(3)}">
+				<div class="ui-block-a menuItemImage blueBgButton">
+					<img src="../../images/iconBox.png">
+				</div>
+				<div class="ui-block-b menuItemText blueBgButton"
+					style="width: 45%;">
+					<a href="offers.html">NOVEDADES Y PROMOCIONES</a>
+				</div>
+				<div class="ui-block-c menuCorner">
+					<img src="../../images/corner.png" class="corner">
+				</div>
+			</div>
+			<div class="ui-grid-b mainMenuItem violetBgButton"
+				data-bind="click: function(){goToPage(4)}">
+				<div class="ui-block-a menuItemImage blueBgButton">
+					<img src="../../images/iconShare.png">
+				</div>
+				<div class="ui-block-b menuItemText blueBgButton"
+					style="width: 45%;">
+					<a href="social.html">SIGUENOS Y COMPARTE</a>
+				</div>
+				<div class="ui-block-c menuCorner">
+					<img src="../../images/corner.png" class="corner">
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>

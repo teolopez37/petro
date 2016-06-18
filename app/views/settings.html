@@ -1,0 +1,134 @@
+<div data-role="page" data-add-back-btn="false" id="settings"
+	style="background-color: #48a1d9;">
+
+	<script src="../viewModels/settings.js"></script>
+
+	<div data-role="header" style="overflow: hidden;">
+		<div data-role="navbar" class="headerNavbar">
+			<ul>
+				<li>
+					<a href="../../index.html" class="headerDefault" data-icon=""
+						data-direction="reverse"></a>
+				</li>
+				<li>
+					<a href="petro.html" class="headerPages blueBgButton" data-icon=""
+						data-direction="reverse">
+						<img src="../../images/iconPetro.png" />
+					</a>
+				</li>
+				<li>
+					<a href="map.html" class="headerPages blueBgButton" data-icon=""
+						data-direction="reverse">
+						<img src="../../images/iconSearch.png" />
+					</a>
+				</li>
+				<li>
+					<a href="#" class="headerPages blueBgButton" data-icon="">
+						<img src="../../images/iconOffer.png" />
+					</a>
+				</li>
+				<li>
+					<a href="social.html" class="headerPages blueBgButton" data-icon="">
+						<img src="../../images/iconShare.png" />
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="ui-content">
+		<div class="settingsOptions">
+			<div class="ui-grid-a">
+				<div class="ui-block-a title">
+					<p>MOSTRAR GASOLINERAS EN UN RANGO DE:</p>
+				</div>
+				<div class="ui-block-b setting">
+					<p
+						data-bind="visible: !showRangeInput(), text: searchRange() + 'km', click: showRangeControls"></p>
+					<div data-bind="visible: showRangeInput" class="ui-grid-a">
+						<div class="ui-block-a">
+							<input type="tel" id="inRange"
+								data-bind="value: searchRange, valueUpdate: 'input'" />
+						</div>
+						<div class="ui-block-b">
+							<button data-mini="true"
+								style="font-size: 11px; margin-top: 10px;"
+								data-bind="click: setRange">Ok</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="settingsOptions">
+			<div class="ui-grid-a">
+				<div class="ui-block-a title">
+					<p>NOTIFICAR PROMOCIONES:</p>
+				</div>
+				<div class="ui-block-b setting">
+					<form>
+						<select name="fpNotifications" id="fpNotifications"
+							data-role="flipswitch" data-mini=""
+							data-bind="value: sendNotifications">
+							<option value="0">No</option>
+							<option value="1">Si</option>
+						</select>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="settingsOptions">
+			<div class="ui-grid-a">
+				<div class="ui-block-a title">
+					<p>APP DE NAVEGACIÓN:</p>
+				</div>
+				<div class="ui-block-b setting">
+					<p>WAZE</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="ui-grid-a" style="margin-top: 50px;">
+			<div class="ui-block-a" style="width: 40%">
+				<img src="../../images/logoSettings.png" style="width: 100%">
+			</div>
+			<div class="ui-block-b"
+				style="width: 60%; color: #fff; font-weight: bold; padding-left: 10px;">
+				<p>PetroEstaciones es una app desarrollada por EP PETROECUADOR</p>
+				<p>Derechos Reservados</p>
+				<p style="margin-top: 10px;">
+					Para información adicional contactarse a:<br />+593 - 2563060 <br />Quito
+					- Ecuador
+				</p>
+				<p style="font-weight: normal;">visitanos en:</p>
+			</div>
+		</div>
+		<div class="ui-grid-a"
+			style="background-color: #fff; padding-top: 5px;">
+			<div class="ui-block-a" style="width: 40%"></div>
+			<div class="ui-block-b" style="width: 60%;">
+				<div class="ui-grid-c">
+					<div class="ui-block-a"
+						data-bind="click: function(){openNetwork(1)}">
+						<img src="../../images/iconFb.png" width="75%" />
+					</div>
+					<div class="ui-block-b"
+						data-bind="click: function(){openNetwork(2)}">
+						<img src="../../images/iconTw.png" width="75%" />
+					</div>
+					<div class="ui-block-c"
+						data-bind="click: function(){openNetwork(3)}">
+						<img src="../../images/iconYt.png" width="75%" />
+					</div>
+					<div class="ui-block-d"
+						data-bind="click: function(){openNetwork(4)}">
+						<img src="../../images/iconFk.png" width="75%" />
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+
+
+</div>

@@ -1,0 +1,167 @@
+<div data-role="page" data-add-back-btn="false" id="mapFilters">
+
+	<script src="../viewModels/mapFilters.js"></script>
+
+	<div data-role="header" data-position="fixed" data-tap-toggle="false"
+		class="appHeader">
+		<div class="ui-grid-a pageHeader orangeBgButton">
+			<div class="ui-block-a headerButton blueBgButton">
+				<a href="#" class="headerDefault" data-icon=""
+					data-bind="click: openPänel">
+					<img src="../../images/iconBars.png" />
+				</a>
+			</div>
+			<div class="ui-block-b headerText blueBgButton">
+				<img src="../../images/iconGas.png" />
+				<span>ESTACIONES DE SERVICIOS</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="ui-content">
+		<div id="selectFilters" data-role="navbar" data-iconpos="left">
+			<div class="ui-grid-b">
+				<div class="ui-block-a">
+					<select id="cmbState"
+						data-bind="options: states, optionsText: 'name', optionsValue: 'id', value: selectedState, optionsCaption: 'Provincia'">
+					</select>
+				</div>
+				<div class="ui-block-b">
+					<select id="cmbCity"
+						data-bind="options: cities, optionsText: 'name', optionsValue: 'id', value: selectedCity, optionsCaption: 'Ciudad'">
+					</select>
+				</div>
+				<div class="ui-block-c">
+					<button data-mini="true" data-bind="click: searchByStateAndCity"
+						style="font-size: 11px; margin-top: 9px; color: gray;">Buscar</button>
+				</div>
+			</div>
+		</div>
+		<div data-role="navbar" data-iconpos="left" class="navbarPages">
+			<ul>
+				<li>
+					<a href="#" data-icon="false"
+						style="background-image: url('../../images/iconSquares.png');"
+						data-bind="click: function(){toggleMapView(1)}, css: {'ui-btn-active': viewShowed() == 1}">
+					</a>
+				</li>
+				<li>
+					<a href="#" data-icon="false" class=""
+						style="background-image: url('../../images/iconMap.png');"
+						data-bind="click: function(){toggleMapView(2)}, css: {'ui-btn-active': viewShowed() == 2}"></a>
+				</li>
+				<li>
+					<div class="blueBgButton" style="height: 34px;">&nbsp</div>
+				</li>
+			</ul>
+		</div>
+
+		<div id="sitesList" data-bind="visible: viewShowed() == 1">
+			<div class="emptyContent" data-bind="visible: stations().length == 0">No
+				existen estaciones para mostrar</div>
+
+			<!-- ko foreach: stations -->
+			<div class="ui-grid-c stationsList">
+				<div class="ui-block-a station1">
+					<img src="../../images/iconDispatcher.png" />
+				</div>
+				<div class="ui-block-b station2">
+					<a href="#" data-bind="click: function(){$root.openMarker($index)}">
+						<span class="name" data-bind="text: name"></span>
+						<br />
+						<span class="address" data-bind="text: address"></span>
+					</a>
+				</div>
+			</div>
+			<!-- /ko -->
+
+		</div>
+
+		<div id="sitesMap" class="map-content"
+			data-bind="visible: viewShowed() == 2">
+			<div id="map-canvas"></div>
+			<img src="../../images/iconExpand.png" class="imgExpandMap"
+				data-bind="visible: !isMapExpanded(), click: toogleExpandMap" />
+			<img src="../../images/iconContract.png" class="imgExpandMap"
+				data-bind="visible: isMapExpanded, click: toogleExpandMap" />
+		</div>
+
+	</div>
+
+	<div data-role="panel" data-position-fixed="true" data-display="push"
+		data-theme="b" id="pnlLeft">
+		<ul data-role="listview">
+			<li data-icon="delete">
+				<a href="#" data-rel="close" class="blueBgButton">PetroGuía</a>
+			</li>
+		</ul>
+		<div class="linksContainer">
+			<div class="ui-grid-b mainMenuItem heavenlyBgButton"
+				data-bind="click: function(){goToPage(0)}">
+				<div class="ui-block-a menuItemImage blueBgButton">
+					<img src="../../images/iconHome.png">
+				</div>
+				<div class="ui-block-b menuItemText blueBgButton"
+					style="width: 45%;">
+					<a href="../../index.html">Inicio</a>
+				</div>
+				<div class="ui-block-c menuCorner">
+					<img src="../../images/corner.png" class="corner">
+				</div>
+			</div>
+			<div class="ui-grid-b mainMenuItem greenBgButton"
+				data-bind="click: function(){goToPage(1)}">
+				<div class="ui-block-a menuItemImage blueBgButton">
+					<img src="../../images/iconPetro.png">
+				</div>
+				<div class="ui-block-b menuItemText blueBgButton"
+					style="width: 45%;">
+					<a href="petro.html">CONOCE PETROECUADOR</a>
+				</div>
+				<div class="ui-block-c menuCorner">
+					<img src="../../images/corner.png" class="corner">
+				</div>
+			</div>
+			<div class="ui-grid-b  mainMenuItem orangeBgButton"
+				data-bind="click: function(){goToPage(2)}">
+				<div class="ui-block-a menuItemImage blueBgButton">
+					<img src="../../images/iconGas.png">
+				</div>
+				<div class="ui-block-b menuItemText blueBgButton"
+					style="width: 45%;">
+					<a href="map.html">ESTACIONES DE SERVICIOS</a>
+				</div>
+				<div class="ui-block-c menuCorner">
+					<img src="../../images/corner.png" class="corner">
+				</div>
+			</div>
+			<div class="ui-grid-b mainMenuItem redBgButton"
+				data-bind="click: function(){goToPage(3)}">
+				<div class="ui-block-a menuItemImage blueBgButton">
+					<img src="../../images/iconBox.png">
+				</div>
+				<div class="ui-block-b menuItemText blueBgButton"
+					style="width: 45%;">
+					<a href="offers.html">NOVEDADES Y PROMOCIONES</a>
+				</div>
+				<div class="ui-block-c menuCorner">
+					<img src="../../images/corner.png" class="corner">
+				</div>
+			</div>
+			<div class="ui-grid-b mainMenuItem violetBgButton"
+				data-bind="click: function(){goToPage(4)}">
+				<div class="ui-block-a menuItemImage blueBgButton">
+					<img src="../../images/iconShare.png">
+				</div>
+				<div class="ui-block-b menuItemText blueBgButton"
+					style="width: 45%;">
+					<a href="social.html">SIGUENOS Y COMPARTE</a>
+				</div>
+				<div class="ui-block-c menuCorner">
+					<img src="../../images/corner.png" class="corner">
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>

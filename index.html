@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Petrocomercial1</title>
+<meta name="viewport"
+	content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1" />
+<meta name="viewport" content="width=device-width, height=device-height" />
+
+<link rel="stylesheet" href="css/libs/jquery.mobile-1.4.5.min.css" />
+<link rel="stylesheet" href="css/libs/owl.carousel.css" />
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/loaders.css" />
+
+<script src="cordova.js"></script>
+<!--  
+<script src="GAPlugin.js"></script>
+-->
+
+<script src="js/libs/jquery.js"></script>
+
+<script src="js/libs/jquery.panzoom.min.js"></script>
+<script src="js/libs/jquery.mousewheel.js"></script>
+
+<script src="js/libs/knockout-3.3.0.js"></script>
+<script src="js/libs/owl.carousel.min.js"></script>
+<script src="js/libs/jquery.soap.js"></script>
+<script src="js/libs/xml2json2.js"></script>
+
+
+<script src="js/config.js"></script>
+<script src="app/models/wsCalls.js"></script>
+<script src="app/models/data.js"></script>
+<script src="app/models/dataRequests.js"></script>
+<script src="js/common.js"></script>
+
+</head>
+<body>
+
+	<div data-role="page" data-add-back-btn="false" id="index">
+
+		<script src="js/index.js"></script>
+
+		<div data-role="header" data-position="fixed" data-tap-toggle="false">
+			<div class="ui-grid-a mainHeader blueBgButton">
+				<div class="ui-block-a" style="width: 20%">
+					<img style="width: 50px;" class="mainHeaderImg"
+						src="images/icon.png" />
+				</div>
+				<div class="ui-block-b mainSettingsButton"
+					style="width: 20%; text-align: right;">
+					<h2 class="cool">PetroGuía</h2>
+				</div>
+			</div>
+		</div>
+
+		<div class="ui-content" style="">
+
+			<!-- <div>
+				<input type="text" data-bind="value: urlToOpen, valueUpdate: 'keyup'" />
+				<a href="#" data-bind="attr: {href: urlToOpen}" target="_blank">ir</a>
+			</div>  -->
+
+			<div id="galleryCarousel" class="owl-carousel">
+				<!-- ko foreach: homeNews -->
+				<div class="item" data-bind="click: $root.openLink">
+					<img
+						data-bind="attr: {src: imgUrl}, event: {error: $root.onImgLoadError}" />
+				</div>
+				<!-- /ko -->
+
+			</div>
+			<!-- <div>Cargando...</div> -->
+			<div style="">
+
+				<div class="ui-grid-c mainMenuItem greenBgButton"
+					data-bind="click: function(){goToPage(1)}">
+					<div class="ui-block-a menuItemImage blueBgButton">
+						<img src="images/iconPetro.png">
+					</div>
+					<div class="ui-block-b menuItemText blueBgButton">
+						<a href="app/views/petro.html">CONOCE PETROECUADOR</a>
+					</div>
+					<div class="ui-block-c menuCorner">
+						<img src="images/corner.png" class="corner">
+					</div>
+				</div>
+				<div class="ui-grid-c mainMenuItem orangeBgButton"
+					data-bind="click: function(){goToPage(2)}">
+					<div class="ui-block-a menuItemImage blueBgButton">
+						<img src="images/iconGas.png">
+					</div>
+					<div class="ui-block-b menuItemText blueBgButton">
+						<a href="app/views/map.html">ESTACIONES DE SERVICIOS</a>
+					</div>
+					<div class="ui-block-c menuCorner">
+						<img src="images/corner.png" class="corner">
+					</div>
+				</div>
+				<div class="ui-grid-c mainMenuItem redBgButton"
+					data-bind="click: function(){goToPage(3)}">
+					<div class="ui-block-a menuItemImage blueBgButton">
+						<img src="images/iconBox.png">
+					</div>
+					<div class="ui-block-b menuItemText blueBgButton">
+						<a href="app/views/offers.html">NOVEDADES Y PROMOCIONES</a>
+					</div>
+					<div class="ui-block-c menuCorner">
+						<img src="images/corner.png" class="corner">
+					</div>
+				</div>
+				<div class="ui-grid-c mainMenuItem violetBgButton"
+					data-bind="click: function(){goToPage(4)}">
+					<div class="ui-block-a menuItemImage blueBgButton">
+						<img src="images/iconShare.png">
+					</div>
+					<div class="ui-block-b menuItemText blueBgButton">
+						<a href="social.html">SÍGUENOS Y COMPARTE</a>
+					</div>
+					<div class="ui-block-c menuCorner">
+						<img src="images/corner.png" class="corner">
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<div data-role="footer" data-position="fixed" data-tap-toggle="false">
+			<img src="images/footer.png" />
+		</div>
+
+	</div>
+
+	<script src="js/libs/jquery.mobile-1.4.5.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+
+</body>
+</html>
